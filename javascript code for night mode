@@ -1,0 +1,36 @@
+<script>
+const body = document.querySelector('body');
+const nightModeBtn = document.querySelector('.sp_night_mode_btn');
+const styleElement = document.createElement('style');
+styleElement.id = "nightModeStyle";
+document.head.appendChild(styleElement);
+
+handleNightMode(localStorage.getItem('nightMode')==null || localStorage.getItem('nightMode')==0 ?0:1);
+
+nightModeBtn.addEventListener('click', function() {
+    let cNightMode = localStorage.getItem('nightMode');
+    alert(cNightMode);
+    if(cNightMode == 1){
+        localStorage.setItem('nightMode', 0);
+    }else{
+        localStorage.setItem('nightMode', 1);
+    }
+    handleNightMode(localStorage.getItem('nightMode'));
+
+});
+
+
+function handleNightMode(currentNightMode){
+
+    if(currentNightMode == 0){
+             styleElement.textContent = "";
+    }else{
+             styleElement.textContent = `
+          body {
+            background-color: #000;
+          }
+        `;
+    }
+}
+
+</script>
